@@ -27,6 +27,7 @@ npm test
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Demo Videos](#-demo-videos)
 - [Framework & Tools](#framework--tools)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
@@ -44,6 +45,15 @@ This framework automates three main use cases:
 1. **Message Box Task (UI Automation)** - Create and configure a Message Box task
 2. **Form with Upload Flow (UI Automation)** - Create a form with Textbox and File Upload controls
 3. **Learning Instance API Flow (API Automation)** - Create and validate Learning Instances via API
+
+## 🎥 Demo Videos
+
+Watch the automation in action:
+
+- 📹 **[Use Case 1: Message Box Task Demo](./useCase1.mp4)** - Complete flow of Message Box task creation and configuration
+- 📹 **[Use Case 2: Form with Upload Flow Demo](./useCase2.mp4)** - Complete flow of form creation with file upload functionality
+
+> Click on the video links above to watch the automated test executions. Videos will open in GitHub's video player.
 
 ## 🛠 Framework & Tools
 
@@ -273,11 +283,11 @@ npx playwright test tests/use-case-1-message-box.spec.js
 
 **Demo Video**:
 
-<video src="useCase1.mp4" width="800" controls>
-  Your browser does not support the video tag.
-</video>
+📹 [Watch Use Case 1 Demo Video](./useCase1.mp4)
 
-*This video demonstrates the complete automation flow for Use Case 1: Message Box Task creation. It shows the login process, navigation to the Automation section, Task Bot creation, Message Box action configuration, and successful completion of the task.*
+_This video demonstrates the complete automation flow for Use Case 1: Message Box Task creation. It shows the login process, navigation to the Automation section, Task Bot creation, Message Box action configuration, and successful completion of the task._
+
+> **Note**: Click the link above to view the video. The video will open in GitHub's video player.
 
 ### Use Case 2: Form with Upload Flow (UI Automation)
 
@@ -307,11 +317,11 @@ npx playwright test tests/use-case-2-form-upload.spec.js
 
 **Demo Video**:
 
-<video src="useCase2.mp4" width="800" controls>
-  Your browser does not support the video tag.
-</video>
+📹 [Watch Use Case 2 Demo Video](./useCase2.mp4)
 
-*This video demonstrates the complete automation flow for Use Case 2: Form with Upload Flow. It shows the login process, form creation, adding Textbox and File Upload controls, entering text data, uploading a file, and verifying the successful form submission.*
+_This video demonstrates the complete automation flow for Use Case 2: Form with Upload Flow. It shows the login process, form creation, adding Textbox and File Upload controls, entering text data, uploading a file, and verifying the successful form submission._
+
+> **Note**: Click the link above to view the video. The video will open in GitHub's video player.
 
 ### Use Case 3: Learning Instance API Flow (API Automation)
 
@@ -340,14 +350,14 @@ npx playwright test tests/use-case-3-learning-instance-api.spec.js
 
 ## 🔐 Environment Variables
 
-| Variable            | Description                          | Required | Default/Example                                    |
-| ------------------- | ------------------------------------ | -------- | -------------------------------------------------- |
-| `USERNAME`          | Automation Anywhere username         | ✅ Yes   | `your-username`                                    |
-| `PASSWORD`          | Automation Anywhere password         | ✅ Yes   | `your-password`                                    |
-| `BASE_URL`          | Application base URL                 | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital` |
-| `API_BASE_URL`      | API base URL                         | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital/api` |
-| `HEADLESS`          | Run browser in headless mode         | ❌ No    | `false` (set to `true` for CI/CD)                  |
-| `SLOW_MO`           | Slow down operations (milliseconds)  | ❌ No    | `0` (increase for debugging)                       |
+| Variable       | Description                         | Required | Default/Example                                             |
+| -------------- | ----------------------------------- | -------- | ----------------------------------------------------------- |
+| `USERNAME`     | Automation Anywhere username        | ✅ Yes   | `your-username`                                             |
+| `PASSWORD`     | Automation Anywhere password        | ✅ Yes   | `your-password`                                             |
+| `BASE_URL`     | Application base URL                | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital`     |
+| `API_BASE_URL` | API base URL                        | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital/api` |
+| `HEADLESS`     | Run browser in headless mode        | ❌ No    | `false` (set to `true` for CI/CD)                           |
+| `SLOW_MO`      | Slow down operations (milliseconds) | ❌ No    | `0` (increase for debugging)                                |
 
 ### Environment Configuration Notes
 
