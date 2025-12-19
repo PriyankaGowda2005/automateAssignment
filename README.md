@@ -27,7 +27,7 @@ npm test
 ## 📋 Table of Contents
 
 - [Overview](#overview)
-- [Demo Videos](#-demo-videos)
+- [Demo Videos](#demo-videos)
 - [Framework & Tools](#framework--tools)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
