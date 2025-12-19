@@ -1,0 +1,24 @@
+{
+  "valid": {
+    "formName": "TestForm",
+    "description": "Automated test form with Textbox and File Upload",
+    "textboxValue": "Test input text for automation",
+    "fileTypes": [".txt", ".pdf", ".doc", ".docx"]
+  },
+  "invalid": {
+    "emptyFormName": "",
+    "emptyTextbox": "",
+    "invalidFileType": ".exe",
+    "tooLargeFile": "file_over_10mb.txt",
+    "specialCharactersInName": "Form!@#$%"
+  },
+  "edgeCases": {
+    "veryLongFormName": "A".repeat(255),
+    "formNameWithSpaces": "Test Form Name",
+    "formNameWithNumbers": "Form123",
+    "unicodeFormName": "测试表单",
+    "emptyFile": "",
+    "multipleFiles": ["file1.txt", "file2.txt"]
+  }
+}
+

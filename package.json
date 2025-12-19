@@ -1,0 +1,43 @@
+{
+  "name": "automation-everywhere-tests",
+  "version": "1.0.0",
+  "description": "Automation testing framework for Automation Anywhere Community Edition",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --grep '@ui'",
+    "test:api": "playwright test --grep '@api'",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:allure": "playwright test --reporter=list,allure-playwright",
+    "test:parallel": "playwright test --workers=4",
+    "test:all-browsers": "playwright test --project=chromium --project=firefox --project=webkit",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open allure-report",
+    "allure:serve": "allure serve allure-results",
+    "install:browsers": "playwright install",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write \"**/*.{js,json,md}\""
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "pom",
+    "javascript",
+    "allure"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "allure-playwright": "^2.13.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  }
+}

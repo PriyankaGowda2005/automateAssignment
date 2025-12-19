@@ -1,0 +1,22 @@
+{
+  "valid": {
+    "instanceName": "LearningInstance",
+    "description": "Automated test learning instance",
+    "type": "default"
+  },
+  "invalid": {
+    "emptyInstanceName": "",
+    "invalidType": "invalid_type",
+    "specialCharacters": "Instance!@#$",
+    "sqlInjection": "'; DROP TABLE instances; --"
+  },
+  "edgeCases": {
+    "veryLongName": "A".repeat(100),
+    "nameWithSpaces": "Learning Instance Name",
+    "nameWithNumbers": "Instance123",
+    "unicodeName": "学习实例",
+    "minimalDescription": "A",
+    "veryLongDescription": "A".repeat(1000)
+  }
+}
+

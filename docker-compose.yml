@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: automation-tests
+    environment:
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - BASE_URL=${BASE_URL:-https://www.automationanywhere.com/products/enterprise/community-edition}
+      - API_BASE_URL=${API_BASE_URL:-https://www.automationanywhere.com/api}
+      - HEADLESS=true
+    volumes:
+      - ./test-results:/app/test-results
+      - ./allure-results:/app/allure-results
+      - ./logs:/app/logs
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+

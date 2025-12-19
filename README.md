@@ -1,0 +1,403 @@
+# Automation Everywhere - Test Automation Framework
+
+This repository contains an automated testing framework for **Automation Anywhere Community Edition** using Playwright with JavaScript, following the Page Object Model (POM) design pattern.
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Framework & Tools](#framework--tools)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [Configuration](#configuration)
+- [Test Execution](#test-execution)
+- [Use Cases](#use-cases)
+- [Environment Variables](#environment-variables)
+- [Troubleshooting](#troubleshooting)
+
+## 🎯 Overview
+
+This framework automates three main use cases:
+
+1. **Message Box Task (UI Automation)** - Create and configure a Message Box task
+2. **Form with Upload Flow (UI Automation)** - Create a form with Textbox and File Upload controls
+3. **Learning Instance API Flow (API Automation)** - Create and validate Learning Instances via API
+
+## 🛠 Framework & Tools
+
+- **Framework**: Playwright
+- **Language**: JavaScript
+- **Design Pattern**: Page Object Model (POM)
+- **Test Runner**: Playwright Test
+- **Package Manager**: npm
+
+### Dependencies
+
+- `@playwright/test` - Playwright testing framework
+- `dotenv` - Environment variable management
+
+## 📁 Project Structure
+
+```
+AutomationEverywhere/
+├── pages/                      # Page Object Model classes
+│   ├── BasePage.js            # Base page with common methods
+│   ├── LoginPage.js           # Login page interactions
+│   ├── AutomationPage.js     # Automation section navigation
+│   ├── TaskBotPage.js        # Task Bot creation and Message Box
+│   ├── FormPage.js           # Form creation and file upload
+│   └── LearningInstancePage.js # Learning Instance management
+├── tests/                      # Test files
+│   ├── use-case-1-message-box.spec.js
+│   ├── use-case-2-form-upload.spec.js
+│   └── use-case-3-learning-instance-api.spec.js
+├── utils/                      # Utility classes
+│   └── apiHelper.js           # API helper for API testing
+├── test-files/                 # Test data files (created automatically)
+│   └── test-document.txt      # Sample file for upload testing
+├── .env.example                # Environment variables template
+├── .gitignore                  # Git ignore rules
+├── package.json                # Project dependencies
+├── playwright.config.js        # Playwright configuration
+└── README.md                  # This file
+```
+
+## 📦 Prerequisites
+
+Before setting up the project, ensure you have the following installed:
+
+- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
+- **npm** (comes with Node.js)
+- **Git** (optional, for version control)
+
+## 🚀 Setup Instructions
+
+### 1. Clone or Download the Repository
+
+```bash
+# If using Git
+git clone <repository-url>
+cd AutomationEverywhere
+
+# Or extract the zip file to AutomationEverywhere directory
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Install Playwright Browsers
+
+```bash
+npm run install:browsers
+# Or
+npx playwright install
+```
+
+### 4. Configure Environment Variables
+
+1. Copy the example environment file:
+
+   ```bash
+   # On Windows (PowerShell)
+   Copy-Item .env.example .env
+
+   # On Linux/Mac
+   cp .env.example .env
+   ```
+
+2. Edit `.env` file and update with your credentials:
+   ```env
+   USERNAME=your-actual-username
+   PASSWORD=your-actual-password
+   BASE_URL=https://www.automationanywhere.com/products/enterprise/community-edition
+   API_BASE_URL=https://www.automationanywhere.com/api
+   HEADLESS=false
+   SLOW_MO=0
+   ```
+
+### 5. Register on Automation Anywhere
+
+1. Visit: https://www.automationanywhere.com/products/enterprise/community-edition
+2. Register for an account
+3. Update the `.env` file with your registered credentials
+
+## ⚙️ Configuration
+
+### Playwright Configuration
+
+The `playwright.config.js` file contains:
+
+- Browser configurations (Chromium, Firefox, WebKit)
+- Test timeout settings
+- Screenshot and video capture on failure
+- Base URL configuration
+- Reporter settings (HTML, List, JSON)
+
+### Test Configuration
+
+Tests are configured to:
+
+- Run in parallel (configurable)
+- Retry failed tests (2 retries on CI)
+- Capture traces on retry
+- Generate HTML reports
+
+## 🧪 Test Execution
+
+### Run All Tests
+
+```bash
+npm test
+```
+
+### Run Specific Test Suites
+
+```bash
+# Run only UI tests
+npm run test:ui
+
+# Run only API tests
+npm run test:api
+```
+
+### Run Tests in Headed Mode (See Browser)
+
+```bash
+npm run test:headed
+```
+
+### Run Tests in Debug Mode
+
+```bash
+npm run test:debug
+```
+
+### Run Specific Test File
+
+```bash
+npx playwright test tests/use-case-1-message-box.spec.js
+```
+
+### Run Tests with Specific Browser
+
+```bash
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
+```
+
+### View Test Report
+
+```bash
+npm run test:report
+```
+
+This opens the HTML report in your browser showing:
+
+- Test results
+- Screenshots on failure
+- Videos on failure
+- Execution timeline
+
+## 📝 Use Cases
+
+### Use Case 1: Message Box Task (UI Automation)
+
+**Test File**: `tests/use-case-1-message-box.spec.js`
+
+**Steps Automated**:
+
+1. Login to application
+2. Navigate to Automation section
+3. Create Task Bot
+4. Add Message Box action
+5. Verify all UI elements
+6. Configure and save Message Box
+
+**Assertions**:
+
+- ✅ UI element visibility
+- ✅ Proper data entry
+- ✅ Successful creation
+- ✅ Full functional flow validation
+
+**Run Command**:
+
+```bash
+npx playwright test tests/use-case-1-message-box.spec.js
+```
+
+### Use Case 2: Form with Upload Flow (UI Automation)
+
+**Test File**: `tests/use-case-2-form-upload.spec.js`
+
+**Steps Automated**:
+
+1. Login to application
+2. Navigate to Automation section
+3. Create Form
+4. Add Textbox and File Upload elements
+5. Verify UI interactions
+6. Enter text and upload file
+7. Save form and verify upload
+
+**Assertions**:
+
+- ✅ UI element visibility and functionality
+- ✅ File upload status and confirmation
+- ✅ Form submission behavior
+
+**Run Command**:
+
+```bash
+npx playwright test tests/use-case-2-form-upload.spec.js
+```
+
+### Use Case 3: Learning Instance API Flow (API Automation)
+
+**Test File**: `tests/use-case-3-learning-instance-api.spec.js`
+
+**Steps Automated**:
+
+1. Login via API
+2. Navigate to Learning Instance (AI tab)
+3. Create Learning Instance
+4. Validate API responses
+
+**Validations**:
+
+- ✅ HTTP status code (200, 201)
+- ✅ Response time (< 5 seconds)
+- ✅ Response body schema
+- ✅ Field-level checks (ID, name, status)
+- ✅ Functional accuracy
+
+**Run Command**:
+
+```bash
+npx playwright test tests/use-case-3-learning-instance-api.spec.js
+```
+
+## 🔐 Environment Variables
+
+| Variable       | Description                  | Example                                                                    |
+| -------------- | ---------------------------- | -------------------------------------------------------------------------- |
+| `USERNAME`     | Automation Anywhere username | `your-username`                                                            |
+| `PASSWORD`     | Automation Anywhere password | `your-password`                                                            |
+| `BASE_URL`     | Application base URL         | `https://www.automationanywhere.com/products/enterprise/community-edition` |
+| `API_BASE_URL` | API base URL                 | `https://www.automationanywhere.com/api`                                   |
+| `HEADLESS`     | Run browser in headless mode | `false`                                                                    |
+| `SLOW_MO`      | Slow down operations (ms)    | `0`                                                                        |
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### 1. Tests Fail with "Element not found"
+
+**Solution**: The selectors may need to be updated based on the actual application structure. Use Playwright's codegen to generate selectors:
+
+```bash
+npx playwright codegen https://www.automationanywhere.com/products/enterprise/community-edition
+```
+
+#### 2. Login Fails
+
+**Solution**:
+
+- Verify credentials in `.env` file
+- Ensure you're registered on the platform
+- Check if the login page structure has changed
+
+#### 3. API Tests Fail
+
+**Solution**:
+
+- Verify API endpoints in browser Network tab
+- Update `API_BASE_URL` if different
+- Check authentication token extraction logic
+
+#### 4. File Upload Fails
+
+**Solution**:
+
+- Ensure `test-files` directory exists
+- Check file path in test
+- Verify file input selector
+
+#### 5. Browsers Not Installed
+
+**Solution**:
+
+```bash
+npx playwright install
+```
+
+### Debug Tips
+
+1. **Run in headed mode** to see what's happening:
+
+   ```bash
+   npm run test:headed
+   ```
+
+2. **Use debug mode** to step through tests:
+
+   ```bash
+   npm run test:debug
+   ```
+
+3. **Check screenshots** in `test-results/screenshots/` on failure
+
+4. **View videos** in `test-results/` on failure
+
+5. **Use Playwright Inspector**:
+   ```bash
+   PWDEBUG=1 npx playwright test
+   ```
+
+## 📊 Test Reports
+
+After running tests, view the HTML report:
+
+```bash
+npm run test:report
+```
+
+Reports include:
+
+- Test execution summary
+- Pass/fail status
+- Execution time
+- Screenshots on failure
+- Videos on failure
+- Console logs
+
+## 🔄 Updating Selectors
+
+If the application UI changes, update selectors in the Page Object classes:
+
+1. Use Playwright Inspector to identify elements
+2. Update selectors in respective Page Object files
+3. Re-run tests to verify
+
+## 📚 Additional Resources
+
+- [Playwright Documentation](https://playwright.dev/)
+- [JavaScript Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Page Object Model Pattern](https://playwright.dev/docs/pom)
+
+## 📄 License
+
+This project is for educational and testing purposes.
+
+## 👤 Author
+
+Automation Testing Framework for Automation Anywhere Community Edition
+
+---
+
+**Note**: This framework is designed to work with Automation Anywhere Community Edition. Selectors and API endpoints may need adjustment based on the actual application structure. Use browser developer tools and Network tab to identify correct selectors and API endpoints.
