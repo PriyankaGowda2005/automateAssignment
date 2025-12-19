@@ -2,6 +2,28 @@
 
 This repository contains an automated testing framework for **Automation Anywhere Community Edition** using Playwright with JavaScript, following the Page Object Model (POM) design pattern.
 
+**Repository**: [https://github.com/PriyankaGowda2005/automateAssignment.git](https://github.com/PriyankaGowda2005/automateAssignment.git)
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/PriyankaGowda2005/automateAssignment.git
+cd automateAssignment
+
+# 2. Install dependencies
+npm install
+
+# 3. Install Playwright browsers
+npx playwright install
+
+# 4. Create .env file with your credentials
+# (See Environment Variables section below)
+
+# 5. Run tests
+npm test
+```
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -25,16 +47,25 @@ This framework automates three main use cases:
 
 ## 🛠 Framework & Tools
 
-- **Framework**: Playwright
-- **Language**: JavaScript
+### Core Technologies
+
+- **Framework**: Playwright (v1.40.0+)
+- **Language**: JavaScript (Node.js v16+)
 - **Design Pattern**: Page Object Model (POM)
 - **Test Runner**: Playwright Test
 - **Package Manager**: npm
 
-### Dependencies
+### Key Dependencies
 
-- `@playwright/test` - Playwright testing framework
-- `dotenv` - Environment variable management
+- `@playwright/test` (^1.40.0) - Playwright testing framework
+- `dotenv` (^16.3.1) - Environment variable management
+- `winston` (^3.11.0) - Logging utility
+- `allure-playwright` (^2.13.0) - Allure report integration
+
+### Development Tools
+
+- `eslint` - Code linting
+- `prettier` - Code formatting
 
 ## 📁 Project Structure
 
@@ -98,25 +129,33 @@ npx playwright install
 
 ### 4. Configure Environment Variables
 
-1. Copy the example environment file:
+1. Create a `.env` file in the root directory:
 
    ```bash
    # On Windows (PowerShell)
-   Copy-Item .env.example .env
+   New-Item -Path .env -ItemType File
 
    # On Linux/Mac
-   cp .env.example .env
+   touch .env
    ```
 
-2. Edit `.env` file and update with your credentials:
+2. Add the following environment variables to your `.env` file:
+
    ```env
+   # Automation Anywhere Community Edition Credentials
    USERNAME=your-actual-username
    PASSWORD=your-actual-password
-   BASE_URL=https://www.automationanywhere.com/products/enterprise/community-edition
-   API_BASE_URL=https://www.automationanywhere.com/api
+
+   # Application URLs
+   BASE_URL=https://community2.cloud-2.automationanywhere.digital
+   API_BASE_URL=https://community2.cloud-2.automationanywhere.digital/api
+
+   # Browser Configuration
    HEADLESS=false
    SLOW_MO=0
    ```
+
+   **Important**: Replace `your-actual-username` and `your-actual-password` with your registered Automation Anywhere credentials.
 
 ### 5. Register on Automation Anywhere
 
@@ -130,20 +169,22 @@ npx playwright install
 
 The `playwright.config.js` file contains:
 
-- Browser configurations (Chromium, Firefox, WebKit)
-- Test timeout settings
-- Screenshot and video capture on failure
-- Base URL configuration
-- Reporter settings (HTML, List, JSON)
+- **Browser Support**: Chromium, Firefox, WebKit
+- **Test Timeout**: 120 seconds per test
+- **Action Timeout**: 60 seconds per action
+- **Navigation Timeout**: 90 seconds
+- **Screenshot & Video**: Captured on test failure
+- **Base URL**: Configurable via `.env` file
+- **Reporters**: HTML, List, JSON, Allure, JUnit
+- **Workers**: Set to 1 (sequential execution) to avoid HTTP/2 protocol errors
+- **Retries**: 1 retry locally, 2 retries on CI
 
-### Test Configuration
+### Test Configuration Notes
 
-Tests are configured to:
-
-- Run in parallel (configurable)
-- Retry failed tests (2 retries on CI)
-- Capture traces on retry
-- Generate HTML reports
+- Tests run **sequentially** (not in parallel) to prevent HTTP/2 protocol errors
+- HTTP/2 is disabled in browser launch options for stability
+- All tests include automatic retry logic for flaky network issues
+- Screenshots and videos are automatically saved on failure in `test-results/` directory
 
 ## 🧪 Test Execution
 
@@ -283,14 +324,21 @@ npx playwright test tests/use-case-3-learning-instance-api.spec.js
 
 ## 🔐 Environment Variables
 
-| Variable       | Description                  | Example                                                                    |
-| -------------- | ---------------------------- | -------------------------------------------------------------------------- |
-| `USERNAME`     | Automation Anywhere username | `your-username`                                                            |
-| `PASSWORD`     | Automation Anywhere password | `your-password`                                                            |
-| `BASE_URL`     | Application base URL         | `https://www.automationanywhere.com/products/enterprise/community-edition` |
-| `API_BASE_URL` | API base URL                 | `https://www.automationanywhere.com/api`                                   |
-| `HEADLESS`     | Run browser in headless mode | `false`                                                                    |
-| `SLOW_MO`      | Slow down operations (ms)    | `0`                                                                        |
+| Variable            | Description                          | Required | Default/Example                                    |
+| ------------------- | ------------------------------------ | -------- | -------------------------------------------------- |
+| `USERNAME`          | Automation Anywhere username         | ✅ Yes   | `your-username`                                    |
+| `PASSWORD`          | Automation Anywhere password         | ✅ Yes   | `your-password`                                    |
+| `BASE_URL`          | Application base URL                 | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital` |
+| `API_BASE_URL`      | API base URL                         | ✅ Yes   | `https://community2.cloud-2.automationanywhere.digital/api` |
+| `HEADLESS`          | Run browser in headless mode         | ❌ No    | `false` (set to `true` for CI/CD)                  |
+| `SLOW_MO`           | Slow down operations (milliseconds)  | ❌ No    | `0` (increase for debugging)                       |
+
+### Environment Configuration Notes
+
+- **`.env` file is gitignored** - Never commit your actual credentials
+- **BASE_URL** should not include hash routes (`#/login`) or query parameters
+- **HEADLESS mode**: Set to `true` for CI/CD pipelines, `false` for local debugging
+- **SLOW_MO**: Useful for debugging - slows down each action by specified milliseconds
 
 ## 🐛 Troubleshooting
 
