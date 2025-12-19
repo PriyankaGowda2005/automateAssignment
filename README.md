@@ -271,6 +271,14 @@ This opens the HTML report in your browser showing:
 npx playwright test tests/use-case-1-message-box.spec.js
 ```
 
+**Demo Video**:
+
+<video src="useCase1.mp4" width="800" controls>
+  Your browser does not support the video tag.
+</video>
+
+*This video demonstrates the complete automation flow for Use Case 1: Message Box Task creation. It shows the login process, navigation to the Automation section, Task Bot creation, Message Box action configuration, and successful completion of the task.*
+
 ### Use Case 2: Form with Upload Flow (UI Automation)
 
 **Test File**: `tests/use-case-2-form-upload.spec.js`
@@ -296,6 +304,14 @@ npx playwright test tests/use-case-1-message-box.spec.js
 ```bash
 npx playwright test tests/use-case-2-form-upload.spec.js
 ```
+
+**Demo Video**:
+
+<video src="useCase2.mp4" width="800" controls>
+  Your browser does not support the video tag.
+</video>
+
+*This video demonstrates the complete automation flow for Use Case 2: Form with Upload Flow. It shows the login process, form creation, adding Textbox and File Upload controls, entering text data, uploading a file, and verifying the successful form submission.*
 
 ### Use Case 3: Learning Instance API Flow (API Automation)
 
