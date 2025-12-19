@@ -107,7 +107,7 @@ Before setting up the project, ensure you have the following installed:
 
 ```bash
 # If using Git
-git clone <repository-url>
+git clone https://github.com/PriyankaGowda2005/automateAssignment.git
 cd AutomationEverywhere
 
 # Or extract the zip file to AutomationEverywhere directory
