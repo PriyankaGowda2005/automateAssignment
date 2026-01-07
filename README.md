@@ -4,6 +4,8 @@ This repository contains an automated testing framework for **Automation Anywher
 
 **Repository**: [https://github.com/PriyankaGowda2005/automateAssignment.git](https://github.com/PriyankaGowda2005/automateAssignment.git)
 
+> 📚 **New to Test Automation?** Check out the **[Comprehensive Guide](./COMPREHENSIVE_GUIDE.md)** for detailed explanations of TDD, framework architecture, folder structure, and interview preparation tips!
+
 ## 🚀 Quick Start
 
 ```bash
