@@ -123,22 +123,22 @@ Page Object Model is a design pattern where:
 ```
 ┌─────────────────────────────────────────┐
 │           TEST FILES                    │
-│  (use-case-1-message-box.spec.js)     │
-│  - Contains test scenarios             │
-│  - Uses page objects                   │
+│  (use-case-1-message-box.spec.js)       │
+│  - Contains test scenarios              │
+│  - Uses page objects                    │
 └──────────────┬──────────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────────┐
 │         PAGE OBJECTS                    │
-│  (LoginPage, TaskBotPage, etc.)        │
+│  (LoginPage, TaskBotPage, etc.)         │
 │  - Page elements (selectors)            │
 │  - Page actions (methods)               │
 └──────────────┬──────────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────────┐
-│          BASE PAGE                       │
+│          BASE PAGE                      │
 │  (BasePage.js)                          │
 │  - Common methods                       │
 │  - Error handling                       │
@@ -148,8 +148,8 @@ Page Object Model is a design pattern where:
                ▼
 ┌─────────────────────────────────────────┐
 │          UTILITIES                      │
-│  (helpers.js, logger.js, etc.)        │
-│  - Reusable functions                  │
+│  (helpers.js, logger.js, etc.)          │
+│  - Reusable functions                   │
 │  - Logging                              │
 │  - API helpers                          │
 └──────────────┬──────────────────────────┘
@@ -157,9 +157,9 @@ Page Object Model is a design pattern where:
                ▼
 ┌─────────────────────────────────────────┐
 │        PLAYWRIGHT FRAMEWORK             │
-│  - Browser automation                  │
+│  - Browser automation                   │
 │  - Element interaction                  │
-│  - Assertions                          │
+│  - Assertions                           │
 └─────────────────────────────────────────┘
 ```
 
